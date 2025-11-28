@@ -16,11 +16,12 @@
 
         .header {
             margin-top: 35px;
-            font-size: 32px;
+            font-size: 34px;
             font-weight: bold;
             color: #0ff;
             text-shadow: 0px 0px 15px #0ff;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .box {
@@ -42,6 +43,9 @@
             border: none;
             font-size: 17px;
             text-align: center;
+            background: #111;
+            color: #0ff;
+            box-shadow: 0px 0px 10px #0ff inset;
         }
 
         button {
@@ -56,10 +60,12 @@
             border-radius: 8px;
             cursor: pointer;
             box-shadow: 0px 0px 12px #0ff;
+            transition: 0.2s;
         }
 
         button:hover {
-            background: #00cccc;
+            background: #00d4d4;
+            box-shadow: 0px 0px 20px #0ff;
         }
 
         a.group {
@@ -72,6 +78,7 @@
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
+            box-shadow: 0px 0px 12px #25D366;
         }
 
         #output {
@@ -81,8 +88,9 @@
             display: none;
             border-top: 1px solid #0ff;
             padding-top: 10px;
+            color: #0ff;
+            text-shadow: 0px 0px 5px #0ff;
         }
-
     </style>
 </head>
 
@@ -91,13 +99,15 @@
     <div class="header">GHOSTY TOOL 💀</div>
 
     <div class="box">
-        <input id="number" type="text" placeholder="Enter Number">
+        <input id="number" type="text" placeholder="Enter Number (e.g. 92300xxxxxxx)">
 
         <button onclick="runAPI()">START</button>
 
         <pre id="output"></pre>
 
-        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">JOIN WHATSAPP GROUP</a>
+        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+            JOIN WHATSAPP GROUP
+        </a>
     </div>
 
     <script>
@@ -107,21 +117,20 @@
 
             if (!num) {
                 out.style.display = "block";
-                out.innerHTML = "⚠️ Enter a number!";
+                out.innerHTML = "⚠️ Please enter a number!";
                 return;
             }
 
             out.style.display = "block";
-            out.innerHTML = "Processing...";
+            out.innerHTML = "⏳ Processing...";
 
             
-            let api = 
-https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+            let api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
 
             fetch(api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
-                .catch(err => out.innerHTML = "⚠️ Error contacting server");
+                .catch(err => out.innerHTML = "⚠️ Server not responding.");
         }
     </script>
 
