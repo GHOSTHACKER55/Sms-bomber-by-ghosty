@@ -1,109 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMS TOOL BY GHOSTY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS BOMBER BY GHOSTY</title>
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: white;
-        background: url('ghost-background.png') no-repeat center center fixed;
-        background-size: cover;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: url("bg.jpg") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .overlay {
-        background: rgba(0, 0, 0, 0.70);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0; left: 0;
-    }
+        .container {
+            background: rgba(0, 0, 0, 0.65);
+            padding: 25px;
+            width: 90%;
+            max-width: 350px;
+            border-radius: 12px;
+            text-align: center;
+            color: #fff;
+            backdrop-filter: blur(6px);
+        }
 
-    .container {
-        position: relative;
-        z-index: 2;
-        padding: 30px;
-        max-width: 450px;
-        margin: 0 auto;
-        text-align: center;
-        margin-top: 50px;
-    }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
 
-    .logo {
-        width: 150px;
-        margin-bottom: 20px;
-        border-radius: 20px;
-    }
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            margin-bottom: 12px;
+            font-size: 16px;
+            outline: none;
+        }
 
-    input, textarea {
-        width: 100%;
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        border: none;
-        font-size: 16px;
-        outline: none;
-    }
+        button {
+            width: 95%;
+            padding: 12px;
+            border: none;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
 
-    button {
-        width: 100%;
-        padding: 15px;
-        background: #00ffcc;
-        border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-    }
+        .whatsapp {
+            background: #25D366;
+        }
 
-    .wa-btn {
-        width: 100%;
-        padding: 15px;
-        background: #25D366;
-        color: black;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        text-decoration: none;
-        display: block;
-        margin-top: 15px;
-    }
-
-    .footer {
-        margin-top: 20px;
-        font-size: 14px;
-        opacity: .8;
-    }
-</style>
+        #status {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+    </style>
 </head>
-
 <body>
-<div class="overlay"></div>
 
 <div class="container">
+    <div class="title">SMS BOMBER BY GHOSTY</div>
 
-    <img src="ghost-logo.png" class="logo" alt="Ghosty Logo">
+    <input id="number" type="text" placeholder="Enter Number (e.g 923001234567)">
+    
+    <button onclick="startAttack()">START</button>
 
-    <h2>SMS TOOL BY GHOSTY</h2>
-    <p>Safe frontend UI — paste your API manually into the script.</p>
+    <button class="whatsapp" onclick="window.location.href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1'">
+        JOIN WHATSAPP GROUP
+    </button>
 
-    <input type="text" id="number" placeholder="Phone number (e.g. 03001234567)">
-    <textarea id="message" rows="3" placeholder="Message (what you want to send)"></textarea>
-
-    <button onclick="sendSMS()">Send Message (demo)</button>
-
-    <a class="wa-btn" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">Join WhatsApp Group</a>
-
-    <p class="footer">This is a safe UI only. No mass-sending or harmful backend included.</p>
+    <div id="status"></div>
 </div>
 
 <script>
-function sendSMS() {
-    alert("Demo only — add your API URL in the script section.");
+function startAttack() {
+    let num = document.getElementById("number").value;
+
+    if (!num) {
+        document.getElementById("status").innerHTML = "⚠️ Please enter a number!";
+        return;
+    }
+
+    document.getElementById("status").innerHTML = "⏳ Sending...";
+
+    
+    let api = `https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=${num}`;
+
+    fetch(api)
+        .then(r => r.text())
+        .then(d => {
+            document.getElementById("status").innerHTML = "✅ Request sent!";
+        })
+        .catch(err => {
+            document.getElementById("status").innerHTML = "❌ Error sending!";
+        });
 }
 </script>
 
