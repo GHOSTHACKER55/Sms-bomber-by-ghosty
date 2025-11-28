@@ -7,130 +7,86 @@
 
     <style>
         body {
+            background: url("https://i.ibb.co/0rW1KBN/ghost-hacker-team.png") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
             margin: 0;
-            font-family: 'Courier New', monospace;
-            background: #000;
-            color: #fff;
+            padding: 0;
             text-align: center;
-        }
-
-        .header {
-            margin-top: 35px;
-            font-size: 34px;
-            font-weight: bold;
-            color: #0ff;
-            text-shadow: 0px 0px 15px #0ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: white;
         }
 
         .box {
-            background: rgba(0, 0, 0, 0.7);
-            margin: 40px auto;
+            background: rgba(0,0,0,0.75);
+            margin: 60px auto;
             width: 90%;
-            max-width: 420px;
+            max-width: 450px;
             padding: 25px;
-            border-radius: 14px;
-            border: 1px solid #0ff;
-            box-shadow: 0px 0px 18px #0ff;
+            border-radius: 15px;
         }
 
         input {
             width: 90%;
             padding: 12px;
-            margin-top: 15px;
-            border-radius: 6px;
+            margin-top: 12px;
             border: none;
+            border-radius: 8px;
             font-size: 17px;
-            text-align: center;
-            background: #111;
-            color: #0ff;
-            box-shadow: 0px 0px 10px #0ff inset;
         }
 
         button {
-            width: 92%;
-            background: #0ff;
-            color: #000;
-            font-weight: bold;
-            padding: 12px;
-            margin-top: 20px;
-            font-size: 18px;
+            background: #ff0033;
+            color: white;
             border: none;
+            padding: 12px 25px;
             border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0px 0px 12px #0ff;
-            transition: 0.2s;
-        }
-
-        button:hover {
-            background: #00d4d4;
-            box-shadow: 0px 0px 20px #0ff;
+            font-size: 18px;
+            margin-top: 15px;
         }
 
         a.group {
             display: block;
-            background: #25D366;
+            background: green;
             color: white;
             padding: 12px;
-            margin-top: 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0px 0px 12px #25D366;
-        }
-
-        #output {
             margin-top: 20px;
-            white-space: pre-wrap;
-            font-size: 15px;
-            display: none;
-            border-top: 1px solid #0ff;
-            padding-top: 10px;
-            color: #0ff;
-            text-shadow: 0px 0px 5px #0ff;
+            border-radius: 10px;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="header">GHOSTY TOOL 💀</div>
-
     <div class="box">
-        <input id="number" type="text" placeholder="Enter Number (e.g. 92300xxxxxxx)">
+        <h1>GHOSTY TOOL 💀</h1>
+
+        <input type="text" id="number" placeholder="Enter Number">
 
         <button onclick="runAPI()">START</button>
 
-        <pre id="output"></pre>
+        <pre id="output" style="margin-top:20px; display:none;"></pre>
 
         <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-            JOIN WHATSAPP GROUP
+            Join WhatsApp Group
         </a>
     </div>
 
     <script>
         function runAPI() {
-            let num = document.getElementById("number").value;
-            let out = document.getElementById("output");
-
-            if (!num) {
-                out.style.display = "block";
-                out.innerHTML = "⚠️ Please enter a number!";
-                return;
-            }
+            const num = document.getElementById("number").value;
+            const out = document.getElementById("output");
 
             out.style.display = "block";
-            out.innerHTML = "⏳ Processing...";
+            out.innerHTML = "Processing...";
 
-            
-            let api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+            const api =
+https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
 
             fetch(api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
-                .catch(err => out.innerHTML = "⚠️ Server not responding.");
+                .catch(err => out.innerHTML = "Error connecting to API.");
         }
     </script>
 
