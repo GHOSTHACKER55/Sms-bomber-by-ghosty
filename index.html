@@ -3,81 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOSTY TOOL 💀</title>
+    <title>GHOSTY TOOL</title>
 
     <style>
         body {
-            background: url("https://i.postimg.cc/3wZ7PksX/hacker-green-matrix.jpg");
+            background: url("https://images.unsplash.com/photo-1526401485004-2fda9f6d1bc0") no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: #00ffea;
             text-align: center;
+            color: white;
+        }
+
+        /* GLOWING BRAND TITLE */
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
+            margin-bottom: 20px;
         }
 
         .box {
-            background: rgba(0,0,0,0.70);
+            background: rgba(0,0,0,0.7);
             margin: 70px auto;
             width: 90%;
             max-width: 450px;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 25px #00ffc3;
+            box-shadow: 0 0 25px rgba(0,255,255,0.4);
         }
 
-        h1 {
-            font-size: 32px;
-            text-shadow: 0 0 18px #00fff2;
-        }
-
+        /* GLOW INPUT */
         input {
-            width: 92%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 17px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-
-        button {
-            background: #00ffc3;
-            color: black;
-            border: none;
-            padding: 14px 30px;
+            width: 90%;
+            padding: 14px;
+            font-size: 16px;
             border-radius: 10px;
-            font-size: 18px;
-            margin-top: 18px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 0 18px #00ffc3;
+            border: 2px solid #00eaff;
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            outline: none;
+            box-shadow: 0 0 10px #00eaff;
         }
 
+        /* GLOW BUTTON */
+        button {
+            width: 60%;
+            padding: 14px;
+            background: #ff0033;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033;
+        }
+
+        /* WHATSAPP BUTTON */
         a.group {
             display: block;
-            background: #25D366;
-            padding: 14px;
-            margin-top: 20px;
-            border-radius: 12px;
-            text-decoration: none;
+            background: #00a312;
             color: white;
+            padding: 14px;
+            margin-top: 25px;
+            border-radius: 12px;
             font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 0 12px #25D366;
+            text-decoration: none;
+            box-shadow: 0 0 15px #00ff2f;
         }
 
         pre {
-            background: rgba(0,0,0,0.6);
-            padding: 12px;
-            border-radius: 10px;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            text-align: left;
+            color: #00fff2;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -91,7 +91,7 @@
 
         <button onclick="runAPI()">START</button>
 
-        <pre id="output" style="display:none;"></pre>
+        <pre id="output" style="margin-top:20px; display:none;"></pre>
 
         <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
             Join WhatsApp Group
@@ -104,13 +104,11 @@
             const out = document.getElementById("output");
 
             out.style.display = "block";
-            out.innerHTML = "Processing request...";
+            out.innerHTML = "Processing...";
 
-            // API with first letter removed
-            const api = 
-https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+            const api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
 
-            fetch("h" + api)
+            fetch("https://" + api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
                 .catch(err => out.innerHTML = "Error connecting to API.");
