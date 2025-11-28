@@ -3,110 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS BOMBER BY GHOSTY</title>
+    <title>GHOSTY TOOL</title>
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            background: url("bg.jpg") no-repeat center center fixed;
+            background: url("https://img.sanishtech.com/u/3be8278fb47e5a02dc83d804732bc915.jpg");
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background: rgba(0, 0, 0, 0.65);
-            padding: 25px;
-            width: 90%;
-            max-width: 350px;
-            border-radius: 12px;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
             text-align: center;
-            color: #fff;
-            backdrop-filter: blur(6px);
         }
 
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+        .box {
+            background: rgba(0,0,0,0.6);
+            margin: 60px auto;
+            width: 90%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 12px;
         }
 
         input {
             width: 90%;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 12px;
+            margin-top: 12px;
             border: none;
-            margin-bottom: 12px;
-            font-size: 16px;
-            outline: none;
+            border-radius: 8px;
+            font-size: 17px;
         }
 
         button {
-            width: 95%;
-            padding: 12px;
+            background: #ff0033;
+            color: white;
             border: none;
-            background: #ff0000;
-            color: #fff;
-            border-radius: 6px;
+            padding: 12px 25px;
+            border-radius: 8px;
             font-size: 18px;
-            cursor: pointer;
-            margin-bottom: 12px;
+            margin-top: 15px;
         }
 
-        .whatsapp {
-            background: #25D366;
-        }
-
-        #status {
-            margin-top: 10px;
-            font-size: 15px;
+        a.group {
+            display: block;
+            background: green;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-decoration: none;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="title">SMS BOMBER BY GHOSTY</div>
+    <div class="box">
+        <h1>GHOSTY TOOL</h1>
 
-    <input id="number" type="text" placeholder="Enter Number (e.g 923001234567)">
-    
-    <button onclick="startAttack()">START</button>
+        <input type="text" id="number" placeholder="Enter Number">
 
-    <button class="whatsapp" onclick="window.location.href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1'">
-        JOIN WHATSAPP GROUP
-    </button>
+        <button onclick="runAPI()">Run API</button>
 
-    <div id="status"></div>
-</div>
+        <pre id="output" style="margin-top:20px; display:none;"></pre>
 
-<script>
-function startAttack() {
-    let num = document.getElementById("number").value;
+        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+            Join WhatsApp Group
+        </a>
+    </div>
 
-    if (!num) {
-        document.getElementById("status").innerHTML = "⚠️ Please enter a number!";
-        return;
-    }
+    <script>
+        function runAPI() {
+            const num = document.getElementById("number").value;
+            const out = document.getElementById("output");
 
-    document.getElementById("status").innerHTML = "⏳ Sending...";
+            out.style.display = "block";
+            out.innerHTML = "Processing...";
 
-    
-    let api = `https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=${num}`;
+   
+            const api = "https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=" + num;
 
-    fetch(api)
-        .then(r => r.text())
-        .then(d => {
-            document.getElementById("status").innerHTML = "✅ Request sent!";
-        })
-        .catch(err => {
-            document.getElementById("status").innerHTML = "❌ Error sending!";
-        });
-}
-</script>
+            fetch(api)
+                .then(res => res.text())
+                .then(data => out.innerHTML = data)
+                .catch(err => out.innerHTML = "Error connecting to API.");
+        }
+    </script>
 
 </body>
 </html>
