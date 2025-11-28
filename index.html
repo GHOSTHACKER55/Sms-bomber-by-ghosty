@@ -7,82 +7,97 @@
 
     <style>
         body {
-            background: url("https://images.unsplash.com/photo-1526401485004-2fda9f6d1bc0") no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
+            background: #000;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
             text-align: center;
             color: white;
         }
 
-        /* GLOWING BRAND TITLE */
-        h1 {
-            font-size: 36px;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
-            margin-bottom: 20px;
+        /* GHOSTY LOGO BACKGROUND */
+        .ghosty-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            max-width: 450px;
+            opacity: 0.12;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .box {
-            background: rgba(0,0,0,0.7);
-            margin: 70px auto;
+            background: rgba(0, 0, 0, 0.65);
+            margin: 80px auto;
             width: 90%;
             max-width: 450px;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0,255,255,0.4);
+            box-shadow: 0 0 25px rgba(255, 0, 50, 0.6);
+            backdrop-filter: blur(6px);
         }
 
-        /* GLOW INPUT */
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 12px #ff004c;
+        }
+
         input {
             width: 90%;
             padding: 14px;
-            font-size: 16px;
-            border-radius: 10px;
-            border: 2px solid #00eaff;
-            background: rgba(0,0,0,0.4);
-            color: #fff;
-            outline: none;
-            box-shadow: 0 0 10px #00eaff;
-        }
-
-        /* GLOW BUTTON */
-        button {
-            width: 60%;
-            padding: 14px;
-            background: #ff0033;
-            color: white;
+            margin-top: 15px;
             border: none;
             border-radius: 10px;
-            font-size: 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            box-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033;
+            font-size: 18px;
+            outline: none;
         }
 
-        /* WHATSAPP BUTTON */
+        button {
+            width: 90%;
+            padding: 14px;
+            background: #ff0033;
+            border: none;
+            border-radius: 10px;
+            margin-top: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 5px black;
+            box-shadow: 0 0 15px #ff0033;
+        }
+
         a.group {
             display: block;
-            background: #00a312;
-            color: white;
+            width: 90%;
+            background: green;
             padding: 14px;
-            margin-top: 25px;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 10px;
+            margin: 25px auto 0;
+            color: white;
             text-decoration: none;
-            box-shadow: 0 0 15px #00ff2f;
+            font-size: 18px;
+            box-shadow: 0 0 15px green;
         }
 
-        pre {
-            color: #00fff2;
-            font-size: 14px;
+        #output {
+            white-space: pre-wrap;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            display: none;
+            font-size: 15px;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Ghosty Watermark Background Logo -->
+    <img class="ghosty-bg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAGQCAYAAAClbLFAAAAABmJLR0QA/wD/AP+gvaeTAAABg0lEQVR4nO3SQQ0AAAjEMMb/NDhYBxDqoOgHAAAAAAAAAAAAAAAAAAAAAADwGAbHh0Pmn+M67UiPz8Wc58gAIAAAQIECBAgAABAgQIECBAoJgECBAgQIAAAQIECBAgQIAAgWASCBAgQIAAAQIECBAgQIAAAQKBYBIIECBAgAABAgQIECBAgAABAoFgEggQIECAAAECBAgQIECAAAGAGwPO/tpIPnuxAAAAAElFTkSuQmCC">
 
     <div class="box">
         <h1>GHOSTY TOOL 💀</h1>
@@ -91,7 +106,7 @@
 
         <button onclick="runAPI()">START</button>
 
-        <pre id="output" style="margin-top:20px; display:none;"></pre>
+        <pre id="output"></pre>
 
         <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
             Join WhatsApp Group
@@ -103,15 +118,22 @@
             const num = document.getElementById("number").value;
             const out = document.getElementById("output");
 
+            if (num.trim() === "") {
+                alert("Enter a valid number!");
+                return;
+            }
+
             out.style.display = "block";
             out.innerHTML = "Processing...";
 
-            const api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
-
-            fetch("https://" + api)
+            // API WITH FIRST LETTER REMOVED
+            const api = 
+    
+https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1
+            fetch(api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
-                .catch(err => out.innerHTML = "Error connecting to API.");
+                .catch(err => out.innerHTML = "API Error");
         }
     </script>
 
