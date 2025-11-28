@@ -3,55 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOSTY TOOL 💀</title>
+    <title>GHOSTY TOOL</title>
 
     <style>
         body {
-            background: url("https://i.ibb.co/0rW1KBN/ghost-hacker-team.png") no-repeat center center fixed;
+            background: url("https://images.unsplash.com/photo-1526401485004-2fda9f6d1bc0") no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
             color: white;
         }
 
+        /* GLOWING BRAND TITLE */
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
+            margin-bottom: 20px;
+        }
+
         .box {
-            background: rgba(0,0,0,0.75);
-            margin: 60px auto;
+            background: rgba(0,0,0,0.7);
+            margin: 70px auto;
             width: 90%;
             max-width: 450px;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,255,255,0.4);
         }
 
+        /* GLOW INPUT */
         input {
             width: 90%;
-            padding: 12px;
-            margin-top: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid #00eaff;
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            outline: none;
+            box-shadow: 0 0 10px #00eaff;
         }
 
+        /* GLOW BUTTON */
         button {
+            width: 60%;
+            padding: 14px;
             background: #ff0033;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 18px;
-            margin-top: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033;
         }
 
+        /* WHATSAPP BUTTON */
         a.group {
             display: block;
-            background: green;
+            background: #00a312;
             color: white;
-            padding: 12px;
-            margin-top: 20px;
-            border-radius: 10px;
+            padding: 14px;
+            margin-top: 25px;
+            border-radius: 12px;
+            font-size: 18px;
             text-decoration: none;
+            box-shadow: 0 0 15px #00ff2f;
+        }
+
+        pre {
+            color: #00fff2;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -80,9 +106,9 @@
             out.style.display = "block";
             out.innerHTML = "Processing...";
 
-            const api = 
-https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
-            fetch(api)
+            const api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+
+            fetch("https://" + api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
                 .catch(err => out.innerHTML = "Error connecting to API.");
