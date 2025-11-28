@@ -3,101 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOSTY TOOL</title>
+    <title>GHOSTY TOOL 💀</title>
 
     <style>
         body {
-            background: #000;
+            background: url("https://i.postimg.cc/3wZ7PksX/hacker-green-matrix.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            color: #00ffea;
             text-align: center;
-            color: white;
-        }
-
-        /* GHOSTY LOGO BACKGROUND */
-        .ghosty-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 80%;
-            max-width: 450px;
-            opacity: 0.12;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: -1;
         }
 
         .box {
-            background: rgba(0, 0, 0, 0.65);
-            margin: 80px auto;
+            background: rgba(0,0,0,0.70);
+            margin: 70px auto;
             width: 90%;
             max-width: 450px;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 0 25px rgba(255, 0, 50, 0.6);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 25px #00ffc3;
         }
 
         h1 {
             font-size: 32px;
-            font-weight: bold;
-            text-shadow: 0 0 12px #ff004c;
+            text-shadow: 0 0 18px #00fff2;
         }
 
         input {
-            width: 90%;
-            padding: 14px;
-            margin-top: 15px;
+            width: 92%;
+            padding: 12px;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            outline: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 17px;
+            background: rgba(255,255,255,0.2);
+            color: white;
         }
 
         button {
-            width: 90%;
-            padding: 14px;
-            background: #ff0033;
+            background: #00ffc3;
+            color: black;
             border: none;
+            padding: 14px 30px;
             border-radius: 10px;
+            font-size: 18px;
             margin-top: 18px;
-            font-size: 20px;
+            cursor: pointer;
             font-weight: bold;
-            color: white;
-            text-shadow: 0 0 5px black;
-            box-shadow: 0 0 15px #ff0033;
+            box-shadow: 0 0 18px #00ffc3;
         }
 
         a.group {
             display: block;
-            width: 90%;
-            background: green;
+            background: #25D366;
             padding: 14px;
-            border-radius: 10px;
-            margin: 25px auto 0;
-            color: white;
+            margin-top: 20px;
+            border-radius: 12px;
             text-decoration: none;
+            color: white;
             font-size: 18px;
-            box-shadow: 0 0 15px green;
+            font-weight: bold;
+            box-shadow: 0 0 12px #25D366;
         }
 
-        #output {
-            white-space: pre-wrap;
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.6);
+        pre {
+            background: rgba(0,0,0,0.6);
+            padding: 12px;
             border-radius: 10px;
-            display: none;
-            font-size: 15px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Ghosty Watermark Background Logo -->
-    <img class="ghosty-bg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAGQCAYAAAClbLFAAAAABmJLR0QA/wD/AP+gvaeTAAABg0lEQVR4nO3SQQ0AAAjEMMb/NDhYBxDqoOgHAAAAAAAAAAAAAAAAAAAAAADwGAbHh0Pmn+M67UiPz8Wc58gAIAAAQIECBAgAABAgQIECBAoJgECBAgQIAAAQIECBAgQIAAgWASCBAgQIAAAQIECBAgQIAAAQKBYBIIECBAgAABAgQIECBAgAABAoFgEggQIECAAAECBAgQIECAAAGAGwPO/tpIPnuxAAAAAElFTkSuQmCC">
 
     <div class="box">
         <h1>GHOSTY TOOL 💀</h1>
@@ -106,7 +91,7 @@
 
         <button onclick="runAPI()">START</button>
 
-        <pre id="output"></pre>
+        <pre id="output" style="display:none;"></pre>
 
         <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
             Join WhatsApp Group
@@ -118,22 +103,17 @@
             const num = document.getElementById("number").value;
             const out = document.getElementById("output");
 
-            if (num.trim() === "") {
-                alert("Enter a valid number!");
-                return;
-            }
-
             out.style.display = "block";
-            out.innerHTML = "Processing...";
+            out.innerHTML = "Processing request...";
 
-           
+            // API with first letter removed
             const api = 
-    https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
 
-            fetch(api)
+            fetch("h" + api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
-                .catch(err => out.innerHTML = "API Error");
+                .catch(err => out.innerHTML = "Error connecting to API.");
         }
     </script>
 
