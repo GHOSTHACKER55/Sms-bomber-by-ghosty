@@ -64,7 +64,8 @@
 
         <input type="text" id="number" placeholder="Enter Number">
 
-        <button onclick="runAPI()">Run API</button>
+        <!-- Fixed button text -->
+        <button onclick="runAPI()">START</button>
 
         <pre id="output" style="margin-top:20px; display:none;"></pre>
 
@@ -81,7 +82,7 @@
             out.style.display = "block";
             out.innerHTML = "Processing...";
 
-   
+            
             const api = "https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=" + num;
 
             fetch(api)
