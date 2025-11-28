@@ -3,115 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHOSTY TOOL</title>
+    <title>GHOSTY TOOL 💀</title>
 
     <style>
         body {
-            background: url("https://images.unsplash.com/photo-1526401485004-2fda9f6d1bc0") no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
             text-align: center;
-            color: white;
         }
 
-        /* GLOWING BRAND TITLE */
-        h1 {
-            font-size: 36px;
+        .header {
+            margin-top: 35px;
+            font-size: 32px;
             font-weight: bold;
-            color: #ffffff;
-            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
-            margin-bottom: 20px;
+            color: #0ff;
+            text-shadow: 0px 0px 15px #0ff;
+            text-transform: uppercase;
         }
 
         .box {
-            background: rgba(0,0,0,0.7);
-            margin: 70px auto;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 40px auto;
             width: 90%;
-            max-width: 450px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0,255,255,0.4);
+            max-width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid #0ff;
+            box-shadow: 0px 0px 18px #0ff;
         }
 
-        /* GLOW INPUT */
         input {
             width: 90%;
-            padding: 14px;
-            font-size: 16px;
-            border-radius: 10px;
-            border: 2px solid #00eaff;
-            background: rgba(0,0,0,0.4);
-            color: #fff;
-            outline: none;
-            box-shadow: 0 0 10px #00eaff;
-        }
-
-        /* GLOW BUTTON */
-        button {
-            width: 60%;
-            padding: 14px;
-            background: #ff0033;
-            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 6px;
             border: none;
-            border-radius: 10px;
-            font-size: 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            box-shadow: 0 0 15px #ff0033, 0 0 25px #ff0033;
+            font-size: 17px;
+            text-align: center;
         }
 
-        /* WHATSAPP BUTTON */
+        button {
+            width: 92%;
+            background: #0ff;
+            color: #000;
+            font-weight: bold;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0px 0px 12px #0ff;
+        }
+
+        button:hover {
+            background: #00cccc;
+        }
+
         a.group {
             display: block;
-            background: #00a312;
+            background: #25D366;
             color: white;
-            padding: 14px;
+            padding: 12px;
             margin-top: 25px;
-            border-radius: 12px;
-            font-size: 18px;
+            border-radius: 8px;
             text-decoration: none;
-            box-shadow: 0 0 15px #00ff2f;
+            font-size: 18px;
+            font-weight: bold;
         }
 
-        pre {
-            color: #00fff2;
-            font-size: 14px;
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-size: 15px;
+            display: none;
+            border-top: 1px solid #0ff;
+            padding-top: 10px;
         }
+
     </style>
 </head>
 
 <body>
 
-    <div class="box">
-        <h1>GHOSTY TOOL 💀</h1>
+    <div class="header">GHOSTY TOOL 💀</div>
 
-        <input type="text" id="number" placeholder="Enter Number">
+    <div class="box">
+        <input id="number" type="text" placeholder="Enter Number">
 
         <button onclick="runAPI()">START</button>
 
-        <pre id="output" style="margin-top:20px; display:none;"></pre>
+        <pre id="output"></pre>
 
-        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-            Join WhatsApp Group
-        </a>
+        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">JOIN WHATSAPP GROUP</a>
     </div>
 
     <script>
         function runAPI() {
-            const num = document.getElementById("number").value;
-            const out = document.getElementById("output");
+            let num = document.getElementById("number").value;
+            let out = document.getElementById("output");
+
+            if (!num) {
+                out.style.display = "block";
+                out.innerHTML = "⚠️ Enter a number!";
+                return;
+            }
 
             out.style.display = "block";
             out.innerHTML = "Processing...";
 
-            const api = https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
+            
+            let api = 
+https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=923001234567
 
-            fetch("https://" + api)
+            fetch(api)
                 .then(res => res.text())
                 .then(data => out.innerHTML = data)
-                .catch(err => out.innerHTML = "Error connecting to API.");
+                .catch(err => out.innerHTML = "⚠️ Error contacting server");
         }
     </script>
 
