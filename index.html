@@ -1,107 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghosty SMS</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Ghosty SMS</title><style>
+html,body{margin:0;padding:0;background:#000;height:100%;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
+#matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:#000}
+.container{position:relative;z-index:5;width:90%;max-width:420px;margin:40px auto;padding:20px;border:1px solid #ff0000;border-radius:10px;box-shadow:0 0 20px #ff000080;background:rgba(0,0,0,0.65)}
+.title{text-align:center;color:#ff2020;font-size:28px;font-weight:700;text-shadow:0 0 10px #ff0000;margin-bottom:10px;font-family:monospace;text-transform:uppercase}
+.inputBox{width:100%;padding:12px;margin:10px 0;border:1px solid #ff0000;border-radius:8px;background:#200000;color:#ffcccc;outline:none;font-size:16px;box-shadow:0 0 10px #ff000060}
+.startBtn{width:100%;padding:14px;margin-top:8px;background:#ff0000;color:#fff;border:0;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 0 15px #ff0000;text-transform:uppercase}
+.startBtn:active{transform:scale(.96)}
+.whatsapp{display:flex;align-items:center;justify-content:center;margin-top:18px;padding:10px;border-radius:30px;background:#25d366;color:#fff;font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 0 12px #25d36680}
+.whatsapp img{width:22px;margin-right:8px}
+.smallNote{text-align:center;color:#ff5555;font-size:12px;margin-top:10px;font-family:monospace}
+</style></head><body>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0d0d0d;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px;
-        }
+<canvas id="matrix"></canvas>
 
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,255,180,0.25);
-        }
+<div class="container">
+<div class="title">Ghosty SMS</div>
+<input id="num" class="inputBox" placeholder="Enter Target Number"/>
+<input id="count" class="inputBox" placeholder="How Many SMS"/>
+<button class="startBtn" onclick="alert('UI Only — No Backend Added')">Start</button>
 
-        h1 {
-            text-align: center;
-            margin-bottom: 18px;
-            color: #00ffb4;
-            font-size: 30px;
-            text-shadow: 0 0 12px #00ffb4;
-        }
+<a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank" class="whatsapp">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"/> Join WhatsApp Group
+</a>
 
-        input {
-            width: 100%;
-            padding: 14px;
-            margin-top: 14px;
-            background: #0f0f0f;
-            border: 2px solid #00ffb4;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-        }
+<div class="smallNote">UI Demo Only — No real SMS system</div>
+</div>
 
-        button {
-            width: 100%;
-            padding: 16px;
-            margin-top: 25px;
-            background: #00ffb4;
-            border: none;
-            color: black;
-            font-size: 22px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+<script>
+var c=document.getElementById("matrix"),ctx=c.getContext("2d");c.height=window.innerHeight;c.width=window.innerWidth;
+var chars="01 02 03 04 05 06 07 08 09".split("");var drops=[];for(var x=0;x<c.width/14;x++)drops[x]=1;
+function draw(){ctx.fillStyle="rgba(0,0,0,0.05)";ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle="#ff0000";ctx.font="14px monospace";
+for(var i=0;i<drops.length;i++){var t=chars[Math.floor(Math.random()*chars.length)];ctx.fillText(t,i*14,drops[i]*14);
+if(drops[i]*14>c.height&&Math.random()>0.975)drops[i]=0;drops[i]++;}}
+setInterval(draw,35);
+</script>
 
-        .whatsapp {
-            margin-top: 25px;
-            text-align: center;
-            background: #0f0f0f;
-            padding: 12px;
-            border-radius: 12px;
-            border: 2px solid #00ffb4;
-            box-shadow: 0 0 12px rgba(0,255,180,0.25);
-        }
-
-        .whatsapp a {
-            color: #00ffb4;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .whatsapp img {
-            width: 28px;
-            height: 28px;
-            filter: drop-shadow(0 0 6px #00ffb4);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>Ghosty SMS</h1>
-
-        <input type="text" placeholder="Enter target number">
-        <input type="number" placeholder="How many SMS you want">
-
-        <button>Start</button>
-
-        <div class="whatsapp">
-            <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-                Join our group for more tools
-            </a>
-        </div>
-    </div>
-
-</body>
-</html>
+</body></html>
