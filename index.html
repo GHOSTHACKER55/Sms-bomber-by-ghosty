@@ -1,132 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ghosty Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHOSTY TOOL</title>
 
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        background: black;
-        color: white;
-        font-family: Arial, sans-serif;
-    }
+    <style>
+        body {
+            background: url("https://img.sanishtech.com/u/3be8278fb47e5a02dc83d804732bc915.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+        }
 
-    /* Raining background */
-    canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
+        .box {
+            background: rgba(0,0,0,0.6);
+            margin: 60px auto;
+            width: 90%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 12px;
+        }
 
-    .container {
-        margin: 60px auto;
-        width: 90%;
-        max-width: 400px;
-        background: rgba(0,0,0,0.45);
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-    }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+        }
 
-    .mini-banner {
-        font-size: 18px;
-        font-weight: bold;
-        color: red;
-        margin-bottom: 6px;
-    }
+        button {
+            background: #ff0033;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            margin-top: 15px;
+        }
 
-    .arrow {
-        font-size: 22px;
-        color: red;
-        margin-bottom: 15px;
-    }
-
-    input {
-        width: 90%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
-        border: none;
-        background: #2a2a2a;
-        color: white;
-        font-size: 16px;
-    }
-
-    .join-btn {
-        display: block;
-        width: 90%;
-        margin: 15px auto;
-        padding: 15px;
-        background: #b30000;
-        color: white;
-        font-size: 18px;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
-    }
-</style>
+        a.group {
+            display: block;
+            background: green;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+    <div class="box">
+        <h1>GHOSTY TOOL</h1>
 
-<div class="container">
+        <input type="text" id="number" placeholder="Enter Number">
 
-    <h2>Ghosty Tool</h2>
+        <button onclick="runAPI()">Run API</button>
 
-    <input type="text" placeholder="Enter Number">
-    <input type="text" placeholder="Second Input">
+        <pre id="output" style="margin-top:20px; display:none;"></pre>
 
-    <!-- Moved banner above button -->
-    <div class="mini-banner">Join our group for more tools</div>
-    <div class="arrow">⬇</div>
+        <a class="group" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+            Join WhatsApp Group
+        </a>
+    </div>
 
-    <a class="join-btn"
-       href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
-       target="_blank">Join Our WhatsApp Group</a>
+    <script>
+        function runAPI() {
+            const num = document.getElementById("number").value;
+            const out = document.getElementById("output");
 
-</div>
+            out.style.display = "block";
+            out.innerHTML = "Processing...";
 
-<script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+   
+            const api = 
+https://ahmadmodstools.online/PublicApis/SMSBomber.php?qty=1&phone=+923001234567
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const columns = canvas.width / 20;
-const drops = [];
-
-for (let i = 0; i < columns; i++) drops[i] = 1;
-
-function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "red";
-    ctx.font = "20px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * 20, drops[i] * 20);
-
-        if (drops[i] * 20 > canvas.height && Math.random() > 0.95)
-            drops[i] = 0;
-
-        drops[i]++;
-    }
-}
-
-setInterval(draw, 40);
-</script>
+            fetch(api)
+                .then(res => res.text())
+                .then(data => out.innerHTML = data)
+                .catch(err => out.innerHTML = "Error connecting to API.");
+        }
+    </script>
 
 </body>
 </html>
