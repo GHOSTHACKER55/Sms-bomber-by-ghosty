@@ -1,107 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ghosty SMS Bomber</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghosty Gmail Manager</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-        }
+<style>
+    body {
+        margin: 0;
+        background: black;
+        color: red;
+        font-family: 'Courier New', monospace;
+        overflow: hidden;
+    }
 
-        h1 {
-            margin-top: 40px;
-            font-size: 32px;
-            color: red;
-            text-shadow: 0px 0px 10px red;
-        }
+    h1 {
+        text-align: center;
+        margin-top: 40px;
+        color: red;
+        text-shadow: 0 0 15px red;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 400px;
-            margin: 30px auto;
-            padding: 20px;
-            background: rgba(255, 0, 0, 0.15);
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px red;
-        }
+    /* Matrix Background */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-        input {
-            width: 90%;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 10px;
-            border: none;
-            font-size: 16px;
-        }
+    .container {
+        width: 90%;
+        max-width: 500px;
+        margin: auto;
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid red;
+        background: rgba(255,0,0,0.1);
+        border-radius: 10px;
+        box-shadow: 0 0 20px red;
+    }
 
-        button {
-            width: 95%;
-            padding: 14px;
-            background: red;
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0px 0px 10px red;
-        }
+    .email-box {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid red;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.6);
+        box-shadow: 0 0 10px red;
+    }
 
-        button:hover {
-            background: darkred;
-        }
+    .email-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: white;
+        text-shadow: 0 0 10px red;
+    }
 
-        .whatsapp-btn {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 12px 18px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px #25D366;
-        }
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        border: none;
+        border-radius: 5px;
+        background: red;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 10px red;
+    }
 
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            color: white;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-    </style>
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        color: white;
+        opacity: 0.7;
+    }
+</style>
 </head>
 
 <body>
 
-    <h1>Ghosty SMS Bomber</h1>
+<canvas id="matrix"></canvas>
 
-    <div class="container">
-        <input type="number" id="target" placeholder="Enter Target Number" />
-        <input type="number" id="count" placeholder="How Many SMS" />
+<h1>🔥 Ghosty Gmail Manager 🔥</h1>
 
-        <button onclick="startAttack()">Start</button>
+<div class="container">
 
-        <a class="whatsapp-btn" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank">
-            Join Our WhatsApp Group
-        </a>
+    <!-- Gmail 1 -->
+    <div class="email-box">
+        <div class="email-text">Tonybeltonjn@gmail.com</div>
+        <button onclick="openGmail('Tonybeltonjn@gmail.com')">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
     </div>
 
-    <footer>
-        Powered by Ghosty
-    </footer>
+    <!-- Gmail 2 -->
+    <div class="email-box">
+        <div class="email-text">Ghostyhere532@gmail.com</div>
+        <button onclick="openGmail('Ghostyhere532@gmail.com')">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
+    </div>
 
-    <script>
-        function startAttack() {
-            alert("Demo UI Only — API not connected.");
-        }
-    </script>
+    <!-- Gmail 3 -->
+    <div class="email-box">
+        <div class="email-text">Muyeti20@gmail.com</div>
+        <button onclick="openGmail('Muyeti20@gmail.com')">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
+    </div>
+
+</div>
+
+<footer>Powered by Ghosty</footer>
+
+<script>
+/* Matrix Effect */
+var c = document.getElementById("matrix");
+var ctx = c.getContext("2d");
+
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+
+var chars = "01";
+chars = chars.split("");
+
+var font_size = 16;
+var columns = c.width / font_size;
+
+var drops = [];
+for (var x = 0; x < columns; x++) drops[x] = 1;
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    ctx.fillStyle = "red";
+    ctx.font = font_size + "px arial";
+
+    for (var i = 0; i < drops.length; i++) {
+        var text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > c.height && Math.random() > 0.95)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 35);
+
+/* Safe Gmail Tools */
+function openGmail(email) {
+    window.open("https://mail.google.com/", "_blank");
+}
+
+function openYouTube() {
+    window.open("https://youtube.com", "_blank");
+}
+</script>
 
 </body>
 </html>
