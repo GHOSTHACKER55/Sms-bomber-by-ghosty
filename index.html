@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ghosty Tool</title>
+<title>SMS Bomber by Ghosty</title>
 
 <style>
     body {
@@ -32,6 +32,21 @@
         padding: 20px;
         border-radius: 12px;
         text-align: center;
+    }
+
+    /* 🔥 Title design */
+    .main-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #ff1a1a;
+        text-shadow: 0 0 10px #ff0000, 0 0 25px #ff3333;
+        animation: fadeIn 1.5s ease-in-out;
+        margin-bottom: 25px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
     }
 
     .mini-banner {
@@ -92,12 +107,13 @@
 
 <div class="container">
 
-    <h2>Ghosty Tool</h2>
+    <!-- 🔥 Designed Title -->
+    <div class="main-title">SMS Bomber by Ghosty</div>
 
     <input type="text" placeholder="Enter Number">
     <input type="number" placeholder="How many number of SMS">
 
-    <button class="start-btn" onclick="alert('Demo button clicked!')">
+    <button class="start-btn" onclick="alert('Demo button — no action allowed')">
         START
     </button>
 
