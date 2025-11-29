@@ -3,50 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITX JUNAID</title>
-    <link rel="stylesheet" href="https:                                                                     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ghosty SMS</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
     <style>
-        /* styles omitted for brevity */
+        :root {
+            --bg: #0a0a0a;
+            --neon: #ff0066;
+            --neon-2: #00ff88;
+            --neon-3: #0099ff;
+            --accent: rgba(255,0,102,0.12);
+        }
+
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .branding-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.3rem;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--neon);
+            text-shadow: 0 0 15px var(--neon), 0 0 30px var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px 10px;
+            font-family: 'Orbitron';
+            color: #888;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            background: #25D366;
+            padding: 12px 22px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            box-shadow: 0 0 10px #25D366;
+        }
+
+        .whatsapp-link:hover {
+            background: #128C7E;
+        }
     </style>
 </head>
+
 <body>
-    <!-- Matrix Rain Background -->
-    <canvas class="matrix-rain" id="matrixRain"></canvas>
-    
-    <!-- WhatsApp Overlay -->
-    <div class="overlay" id="whatsappOverlay">
-        <div class="overlay-content">
-            <h3 style="font-family: 'Orbitron', sans-serif; color:                                
-            <a href="https://whatsapp.com/channel/0029VbBVXLI0rGiR1h2Qat2h" target="_blank">
-                <i class="fab fa-whatsapp"></i> JOIN WHATSAPP CHANNEL
-            </a>
-            <div class="close-overlay" onclick="closeOverlay()">Close</div>
-        </div>
-    </div>
-    
-    <!-- Main Container -->
+
+    <div class="branding-title">Ghosty SMS</div>
+
     <div class="container">
-        <div class="main-title">ITX JUNAID</div>
-        <div class="sub-title">JuNaid 56</div>
-        <div class="decorative-line"></div>
-        <div class="input-group">
-            <input type="text" id="number" placeholder="Enter number e.g. 923XXXXXXXXX">
-            <input type="number" id="amount" placeholder="Enter amount" min="1" max="10">
+        <h2 style="font-family:Orbitron; text-align:center; color:var(--neon-2);">
+            Welcome to Ghosty SMS
+        </h2>
+        <p style="text-align:center; color:#bbb;">
+            Your interface has been branded successfully.
+        </p>
+
+        <div style="text-align:center; margin-top:20px;">
+            <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
+               class="whatsapp-link"
+               target="_blank">
+               Join WhatsApp Group
+            </a>
         </div>
-        <button class="btn" onclick="sendSMS()">
-            <i class="fas fa-paper-plane"></i> SEND SMS
-        </button>
-        <div class="decorative-line"></div>
-        <!-- Result box -->
-        <div id="result" class="result"></div>
-        <a href="https:                                                                                       
-            <i class="fab fa-whatsapp"></i> Join Our WhatsApp Channel
-        </a>
     </div>
-    
-    <script>
-        // JavaScript code omitted for brevity
-    </script>
+
+    <div class="footer">
+        © 2025 Ghosty SMS — All Rights Reserved
+    </div>
+
 </body>
 </html>
