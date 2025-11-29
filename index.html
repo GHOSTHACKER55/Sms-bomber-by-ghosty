@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ghosty Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghosty SMS Tool</title>
 
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        background: black;
-        color: white;
-        font-family: Arial, sans-serif;
-    }
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+        }
 
-    /* Raining background */
-    canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
-    .container {
-        margin: 60px auto;
-        width: 90%;
-        max-width: 400px;
-        background: rgba(0,0,0,0.45);
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-    }
+        .container {
+            text-align: center;
+            margin-top: 80px;
+        }
 
-    .mini-banner {
-        font-size: 18px;
-        font-weight: bold;
-        color: red;
-        margin-bottom: 6px;
-    }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff3333;
+        }
 
-    .arrow {
-        font-size: 22px;
-        color: red;
-        margin-bottom: 15px;
-    }
+        .input-box {
+            margin: 15px auto;
+            width: 80%;
+            max-width: 300px;
+        }
 
-    input {
-        width: 90%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
-        border: none;
-        background: #2a2a2a;
-        color: white;
-        font-size: 16px;
-    }
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
 
-    .join-btn {
-        display: block;
-        width: 90%;
-        margin: 15px auto;
-        padding: 15px;
-        background: #b30000;
-        color: white;
-        font-size: 18px;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
-    }
-</style>
+        .start-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #ff3333;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .join-btn {
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #444; 
+            border: none;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -79,53 +77,68 @@
 <canvas id="matrix"></canvas>
 
 <div class="container">
+    <h1>Ghosty SMS Tool</h1>
 
-    <h2>Ghosty Tool</h2>
+    <div class="input-box">
+        <input type="text" id="numberInput" placeholder="Enter Number">
+    </div>
 
-    <input type="text" placeholder="Enter Number">
-    <input type="text" placeholder="Second Input">
+    <div class="input-box">
+        <input type="number" id="amountInput" placeholder="How many messages">
+    </div>
 
-    <!-- Moved banner above button -->
-    <div class="mini-banner">Join our group for more tools</div>
-    <div class="arrow">⬇</div>
+    <button class="start-btn" onclick="startProcess()">Start</button>
 
-    <a class="join-btn"
-       href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
-       target="_blank">Join Our WhatsApp Group</a>
+    <br>
 
+    <button class="join-btn" onclick="window.location.href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1'">
+        Join our group for more tools
+    </button>
 </div>
 
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+    // SAFE placeholder – you can connect a safe API later
+    function startProcess() {
+        let number = document.getElementById("numberInput").value;
+        let amount = document.getElementById("amountInput").value;
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const columns = canvas.width / 20;
-const drops = [];
-
-for (let i = 0; i < columns; i++) drops[i] = 1;
-
-function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "red";
-    ctx.font = "20px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * 20, drops[i] * 20);
-
-        if (drops[i] * 20 > canvas.height && Math.random() > 0.95)
-            drops[i] = 0;
-
-        drops[i]++;
+        alert("Number: " + number + "\nMessages: " + amount);
     }
-}
 
-setInterval(draw, 40);
+    // MATRIX RED-TEXT BACKGROUND
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let i = 0; i < columns; i++) drops[i] = 1;
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#ff0000"; 
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 35);
 </script>
 
 </body>
