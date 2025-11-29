@@ -92,21 +92,42 @@
     <!-- Gmail 1 -->
     <div class="email-box">
         <div class="email-text">Tonybeltonjn@gmail.com</div>
-        <button onclick="openGmail('Tonybeltonjn@gmail.com')">Open Gmail</button>
+        <button onclick="openGmail()">Open Gmail</button>
         <button onclick="openYouTube()">Open YouTube</button>
     </div>
 
     <!-- Gmail 2 -->
     <div class="email-box">
         <div class="email-text">Ghostyhere532@gmail.com</div>
-        <button onclick="openGmail('Ghostyhere532@gmail.com')">Open Gmail</button>
+        <button onclick="openGmail()">Open Gmail</button>
         <button onclick="openYouTube()">Open YouTube</button>
     </div>
 
     <!-- Gmail 3 -->
     <div class="email-box">
         <div class="email-text">Muyeti20@gmail.com</div>
-        <button onclick="openGmail('Muyeti20@gmail.com')">Open Gmail</button>
+        <button onclick="openGmail()">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
+    </div>
+
+    <!-- Gmail 4 -->
+    <div class="email-box">
+        <div class="email-text">Hacker@gmail.com</div>
+        <button onclick="openGmail()">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
+    </div>
+
+    <!-- Gmail 5 -->
+    <div class="email-box">
+        <div class="email-text">Musa@gmail.com</div>
+        <button onclick="openGmail()">Open Gmail</button>
+        <button onclick="openYouTube()">Open YouTube</button>
+    </div>
+
+    <!-- Gmail 6 -->
+    <div class="email-box">
+        <div class="email-text">Ghost@gmail.com</div>
+        <button onclick="openGmail()">Open Gmail</button>
         <button onclick="openYouTube()">Open YouTube</button>
     </div>
 
@@ -122,9 +143,7 @@ var ctx = c.getContext("2d");
 c.height = window.innerHeight;
 c.width = window.innerWidth;
 
-var chars = "01";
-chars = chars.split("");
-
+var chars = "01".split("");
 var font_size = 16;
 var columns = c.width / font_size;
 
@@ -148,14 +167,12 @@ function draw() {
         drops[i]++;
     }
 }
-
 setInterval(draw, 35);
 
-/* Safe Gmail Tools */
-function openGmail(email) {
+/* Safe tools — no automation */
+function openGmail() {
     window.open("https://mail.google.com/", "_blank");
 }
-
 function openYouTube() {
     window.open("https://youtube.com", "_blank");
 }
