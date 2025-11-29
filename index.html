@@ -9,29 +9,32 @@
     body {
         margin: 0;
         padding: 0;
+        overflow: hidden;
         font-family: monospace;
         color: #fff;
+    }
 
-        /* BASE64 EMBEDDED BACKGROUND – NEVER BREAKS */
-        background-image:
-            linear-gradient(rgba(255,0,0,0.3), rgba(0,0,0,0.9)),
-            url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/...TRIMMED...');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Background */
     }
 
     .container {
         width: 90%;
         max-width: 420px;
         margin: 70px auto;
-        background: rgba(255, 0, 0, 0.12);
+        background: rgba(255, 0, 0, 0.15);
         border: 2px solid red;
         border-radius: 12px;
         padding: 22px;
         box-shadow: 0 0 25px red;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(4px);
+        z-index: 5;
+        position: relative;
     }
 
     h1 {
@@ -81,6 +84,48 @@
 
 <body>
 
+<!-- MATRIX RAIN BACKGROUND -->
+<canvas id="matrix"></canvas>
+
+<script>
+// MATRIX RED RAIN EFFECT
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+let drops = [];
+for (let i = 0; i < columns; i++) {
+    drops[i] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "red";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        let text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 40);
+</script>
+
+<!-- MAIN TOOL UI -->
 <div class="container">
     <h1>Ghosty Tool</h1>
 
