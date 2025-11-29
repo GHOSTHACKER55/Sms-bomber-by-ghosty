@@ -1,31 +1,134 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport"content="width=device-width,initial-scale=1.0"><title>Ghosty SMS</title><style>
-html,body{margin:0;padding:0;background:#000;overflow:hidden;height:100%;font-family:monospace;color:#fff}
-#c{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-.container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:350px;background:rgba(0,0,0,.7);padding:20px;border:1px solid red;border-radius:10px;box-shadow:0 0 20px red}
-input,button{width:100%;padding:12px;margin:8px 0;border:none;border-radius:5px;font-size:16px}
-input{background:#111;color:#fff;border:1px solid #900}
-button{background:red;color:#fff;font-weight:bold;cursor:pointer}
-button:hover{background:#b30000}
-.footer{text-align:center;margin-top:10px;font-size:14px;color:#ff3b3b}
-.wafloat{position:fixed;bottom:20px;right:20px;width:65px;height:65px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px red;z-index:999;cursor:pointer}
-.wafloat img{width:38px;height:38px}
-</style></head><body>
-<canvas id="c"></canvas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghosty SMS Bomber</title>
 
-<div class="container">
-<h2 style="text-align:center;color:red">Ghosty SMS Tool</h2>
-<input id="t" placeholder="Enter target number">
-<input id="s" placeholder="How many SMS?">
-<button onclick="startSMS()">START</button>
-<div class="footer">Powered by Ghosty</div>
+<style>
+body {
+    margin: 0;
+    background: #000;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Background hacker pattern */
+.bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("https://i.ibb.co/8YH4QvS/hackerbg.png");
+    background-size: cover;
+    opacity: .25;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+/* Main card */
+.card {
+    width: 90%;
+    max-width: 380px;
+    margin: 40px auto;
+    background: rgba(0,0,0,0.35);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #d30076;
+    box-shadow: 0 0 25px #ff0077;
+}
+
+/* Neon Title */
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00ff88, #0ff, #00f6ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 20px;
+    margin-top: -10px;
+    background: linear-gradient(90deg, #0099ff, #66ccff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ff0099;
+    background: rgba(0,0,0,0.45);
+    color: white;
+    margin-bottom: 15px;
+    font-size: 15px;
+    outline: none;
+}
+
+/* Gradient Button */
+.btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ff007b, #007bff);
+    box-shadow: 0 0 18px #ff0099;
+    transition: .2s;
+}
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* WhatsApp Button */
+.wa {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    background: #0bc267;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 0 18px #00ff77;
+}
+.wa img {
+    width: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="card">
+    <div class="title">Ghosty SMS Bomber</div>
+    <div class="subtitle">Powered by Ghosty</div>
+
+    <input type="text" placeholder="Enter number e.g. 923XXXXXXXXX">
+    <input type="number" placeholder="Enter amount">
+
+    <button class="btn">SEND SMS</button>
+
+    <a class="wa" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+        Join Our WhatsApp Channel
+    </a>
 </div>
 
-<a class="wafloat" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-</a>
-
-<script>
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--)d[c.toString(a)]=k[c]||c.toString(a);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('9 5=d.getElementById("c"),2=5.getContext("2d");5.width=b.innerWidth;5.height=b.innerHeight;9 a="01";a=a.split("");9 c=5.height/10;9 8=[];f(9 i=0;i<c;i++)8[i]=1;g h(){2.fillStyle="rgba(0,0,0,0.1)";2.fillRect(0,0,5.width,5.height);2.fillStyle="#f00";2.font="15px monospace";f(9 j=0;j<8.k;j++){9 x=a[l(m*a.n())];2.fillText(x,j*10,8[j]*10);if(8[j]*10>5.height&&p.q(0,1)>0.95)8[j]=0;8[j]++}}r(h,33);9 6=()=>{alert("SMS Started (UI Demo Only)")};',28,28,'||ctx|i|for|canvas|startSMS|height|drops|var|chars|window|columns|document|function|for|function|draw|length|char|||Math|random|setInterval'.split('|')));
-</script>
-
-</body></html>
+</body>
+</html>
