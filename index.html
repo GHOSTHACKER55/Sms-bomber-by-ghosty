@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ghosty Tool</title>
 
 <style>
@@ -13,10 +12,15 @@
         font-family: monospace;
         background: #000;
         color: #fff;
-        background-image: linear-gradient(rgba(255,0,0,0.2), rgba(0,0,0,1)),
-                          url('https://i.imgur.com/0Zf1G9P.png');
+
+        /* NEW working hacking background */
+        background-image: 
+            linear-gradient(rgba(255,0,0,0.3), rgba(0,0,0,1)),
+            url("https://i.imgur.com/9H8gP0D.jpeg");
+
         background-size: cover;
         background-position: center;
+        background-attachment: fixed;
     }
 
     .container {
@@ -27,13 +31,15 @@
         border: 2px solid red;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 0 20px red;
+        box-shadow: 0 0 25px red;
     }
 
     h1 {
         text-align: center;
         color: red;
+        margin-bottom: 25px;
         text-shadow: 0 0 10px red;
+        font-size: 28px;
     }
 
     label {
@@ -45,7 +51,7 @@
         width: 100%;
         padding: 10px;
         margin-top: 5px;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         border: 1px solid red;
         background: #150000;
         color: white;
@@ -70,21 +76,21 @@
         border: 1px solid #ff0000;
     }
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
     <h1>Ghosty Tool</h1>
 
     <label>Enter Target Number</label>
-    <input type="text" placeholder="e.g. 0300xxxxxxx">
+    <input type="text" placeholder="e.g. 0300xxxxxxx" />
 
     <label>Number of SMS</label>
-    <input type="number" placeholder="e.g. 50">
+    <input type="number" placeholder="e.g. 50" />
 
     <label>Your Name</label>
-    <input type="text" placeholder="Ghosty">
+    <input type="text" placeholder="Ghosty" />
 
     <button>START</button>
 
