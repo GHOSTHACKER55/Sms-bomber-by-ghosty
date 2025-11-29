@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Ghosty SMS</title><style>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport"content="width=device-width,initial-scale=1.0"><title>Ghosty SMS</title><style>
 html,body{margin:0;padding:0;background:#000;overflow:hidden;height:100%;font-family:monospace;color:#fff}
 #c{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 .container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:350px;background:rgba(0,0,0,.7);padding:20px;border:1px solid red;border-radius:10px;box-shadow:0 0 20px red}
@@ -7,19 +7,25 @@ input{background:#111;color:#fff;border:1px solid #900}
 button{background:red;color:#fff;font-weight:bold;cursor:pointer}
 button:hover{background:#b30000}
 .footer{text-align:center;margin-top:10px;font-size:14px;color:#ff3b3b}
-.walink{text-align:center;margin-top:15px;font-size:16px}
-.walink a{color:#ff3b3b;text-decoration:none;font-weight:bold}
+.wafloat{position:fixed;bottom:20px;right:20px;width:65px;height:65px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px red;z-index:999;cursor:pointer}
+.wafloat img{width:38px;height:38px}
 </style></head><body>
 <canvas id="c"></canvas>
+
 <div class="container">
 <h2 style="text-align:center;color:red">Ghosty SMS Tool</h2>
 <input id="t" placeholder="Enter target number">
 <input id="s" placeholder="How many SMS?">
 <button onclick="startSMS()">START</button>
-<div class="walink">Join our Group:<br><a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">WhatsApp Group</a></div>
 <div class="footer">Powered by Ghosty</div>
 </div>
+
+<a class="wafloat" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
 <script>
 eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--)d[c.toString(a)]=k[c]||c.toString(a);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('9 5=d.getElementById("c"),2=5.getContext("2d");5.width=b.innerWidth;5.height=b.innerHeight;9 a="01";a=a.split("");9 c=5.height/10;9 8=[];f(9 i=0;i<c;i++)8[i]=1;g h(){2.fillStyle="rgba(0,0,0,0.1)";2.fillRect(0,0,5.width,5.height);2.fillStyle="#f00";2.font="15px monospace";f(9 j=0;j<8.k;j++){9 x=a[l(m*a.n())];2.fillText(x,j*10,8[j]*10);if(8[j]*10>5.height&&p.q(0,1)>0.95)8[j]=0;8[j]++}}r(h,33);9 6=()=>{alert("SMS Started (UI Demo Only)")};',28,28,'||ctx|i|for|canvas|startSMS|height|drops|var|chars|window|columns|document|function|for|function|draw|length|char|||Math|random|setInterval'.split('|')));
 </script>
+
 </body></html>
