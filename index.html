@@ -58,13 +58,27 @@
         font-size: 16px;
     }
 
+    /* Start button */
+    .start-btn {
+        width: 90%;
+        padding: 15px;
+        background: #007bff;
+        border: none;
+        font-size: 18px;
+        border-radius: 12px;
+        color: white;
+        font-weight: bold;
+        margin: 10px auto;
+        cursor: pointer;
+    }
+
     /* GREEN JOIN BUTTON */
     .join-btn {
         display: block;
         width: 90%;
         margin: 15px auto;
         padding: 15px;
-        background: #00c851; 
+        background: #00c851;
         color: white;
         font-size: 18px;
         text-decoration: none;
@@ -84,6 +98,11 @@
 
     <input type="text" placeholder="Enter Number">
     <input type="number" placeholder="How Many SMS?">
+
+    <!-- Start button (safe) -->
+    <button class="start-btn" onclick="alert('Start button clicked!')">
+        START
+    </button>
 
     <div class="mini-banner">Join our group for more tools</div>
     <div class="arrow">⬇</div>
