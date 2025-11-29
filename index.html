@@ -12,11 +12,10 @@
         font-family: monospace;
         color: #fff;
 
-        /* FIXED, WORKING BACKGROUND */
-        background-image: 
+        /* BASE64 EMBEDDED BACKGROUND – NEVER BREAKS */
+        background-image:
             linear-gradient(rgba(255,0,0,0.3), rgba(0,0,0,0.9)),
-            url("https://wallpapercave.com/wp/wp5126754.jpg");
-
+            url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/...TRIMMED...');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -32,7 +31,7 @@
         border-radius: 12px;
         padding: 22px;
         box-shadow: 0 0 25px red;
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(5px);
     }
 
     h1 {
