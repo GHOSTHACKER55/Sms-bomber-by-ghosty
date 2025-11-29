@@ -14,7 +14,6 @@
         color: white;
     }
 
-    /* MATRIX RED BACKGROUND */
     canvas {
         position: fixed;
         top: 0;
@@ -30,28 +29,6 @@
         text-align: center;
     }
 
-    /* GREEN TOP JOIN TEXT */
-    .top-note {
-        font-size: 15px;
-        color: #00ff00;
-        margin-bottom: 4px;
-        font-weight: bold;
-    }
-
-    /* GREEN JOIN BUTTON */
-    .join-btn {
-        background: #25D366;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 20px;
-        font-size: 16px;
-    }
-
-    /* TITLE */
     h1 {
         font-size: 22px;
         color: red;
@@ -59,7 +36,6 @@
         margin-bottom: 20px;
     }
 
-    /* INPUTS */
     input {
         width: 100%;
         padding: 12px;
@@ -100,6 +76,19 @@
             0 0 45px #ffff00;
         transform: scale(1.03);
     }
+
+    /* GREEN JOIN BUTTON (NOW BELOW START) */
+    .join-btn {
+        background: #25D366;
+        color: white;
+        padding: 12px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        display: block;
+        margin-top: 18px;
+        font-size: 16px;
+    }
 </style>
 </head>
 
@@ -109,11 +98,6 @@
 
 <div class="container">
 
-    <div class="top-note">Join our group for more tools</div>
-    <a class="join-btn" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-        Join Our WhatsApp Group
-    </a>
-
     <h1>SMS Bomber by Ghosty</h1>
 
     <input type="number" placeholder="Enter Number">
@@ -121,10 +105,14 @@
 
     <button class="fire-btn">START</button>
 
+    <a class="join-btn" 
+       href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+       Join Our WhatsApp Group
+    </a>
+
 </div>
 
 <script>
-/* RED RAIN EFFECT */
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
 
