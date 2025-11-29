@@ -1,149 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ghosty Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Bomber by Ghosty (UI Only)</title>
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        font-family: monospace;
-        color: #fff;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: monospace;
+            color: white;
+        }
 
-    canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1; /* Background */
-    }
+        /* Background Red Alphabet Rain Effect */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
-    .container {
-        width: 90%;
-        max-width: 420px;
-        margin: 70px auto;
-        background: rgba(255, 0, 0, 0.15);
-        border: 2px solid red;
-        border-radius: 12px;
-        padding: 22px;
-        box-shadow: 0 0 25px red;
-        backdrop-filter: blur(4px);
-        z-index: 5;
-        position: relative;
-    }
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 400px;
+            margin: 80px auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid red;
+            box-shadow: 0 0 20px red;
+        }
 
-    h1 {
-        text-align: center;
-        color: red;
-        text-shadow: 0 0 10px red;
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: red;
+            margin-bottom: 20px;
+        }
 
-    label {
-        font-size: 15px;
-        color: #ff8080;
-    }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 2px solid red;
+            background: black;
+            color: red;
+            font-size: 16px;
+        }
 
-    input {
-        width: 100%;
-        padding: 11px;
-        margin-top: 6px;
-        margin-bottom: 20px;
-        border: 1px solid red;
-        background: #1a0000;
-        color: white;
-        border-radius: 6px;
-        outline: none;
-    }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: red;
+            border: none;
+            border-radius: 6px;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-    button {
-        width: 100%;
-        padding: 13px;
-        background: red;
-        border: none;
-        border-radius: 6px;
-        color: white;
-        font-size: 17px;
-        cursor: pointer;
-        box-shadow: 0 0 12px red;
-    }
+        .group-link {
+            text-align: center;
+            margin-top: 18px;
+        }
 
-    .group-btn {
-        margin-top: 20px;
-        background: #660000;
-        border: 1px solid #ff0000;
-    }
-</style>
+        .group-link a {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Background Rain Canvas -->
+    <canvas id="matrix"></canvas>
 
-<!-- MATRIX RAIN BACKGROUND -->
-<canvas id="matrix"></canvas>
+    <div class="container">
+        <h2>SMS Bomber by Ghosty</h2>
 
-<script>
-// MATRIX RED RAIN EFFECT
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+        <input type="text" id="phone" placeholder="Enter Target Number">
+        <input type="number" id="qty" placeholder="Number of SMS">
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+        <button onclick="startBombing()">START</button>
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const fontSize = 16;
-const columns = canvas.width / fontSize;
+        <div class="group-link">
+            <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN" target="_blank">
+                JOIN OUR GROUP
+            </a>
+        </div>
+    </div>
 
-let drops = [];
-for (let i = 0; i < columns; i++) {
-    drops[i] = 1;
-}
+    <script>
+        /* -------------------------
+            MATRIX RAIN EFFECT
+        -------------------------- */
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
 
-function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
 
-    ctx.fillStyle = "red";
-    ctx.font = fontSize + "px monospace";
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
 
-    for (let i = 0; i < drops.length; i++) {
-        let text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
-            drops[i] = 0;
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
         }
-        drops[i]++;
-    }
-}
 
-setInterval(draw, 40);
-</script>
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-<!-- MAIN TOOL UI -->
-<div class="container">
-    <h1>Ghosty Tool</h1>
+            ctx.fillStyle = "red";
+            ctx.font = fontSize + "px monospace";
 
-    <label>Enter Target Number</label>
-    <input type="text" placeholder="0300xxxxxxx">
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-    <label>Number of SMS</label>
-    <input type="number" placeholder="50">
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
 
-    <label>Your Name</label>
-    <input type="text" placeholder="Ghosty">
+        setInterval(draw, 33);
 
-    <button>START</button>
+        /* -------------------------
+            BUTTON ACTION
+        -------------------------- */
+        function startBombing() {
+            let phone = document.getElementById("phone").value;
+            let qty = document.getElementById("qty").value;
 
-    <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
-        <button class="group-btn">JOIN OUR GROUP</button>
-    </a>
-</div>
+            if (phone === "" || qty === "") {
+                alert("Enter Number & Quantity!");
+                return;
+            }
+
+            // PLACEHOLDER API — ADD YOUR OWN
+            let api = https://ahmadmodstools.online/PublicApis/SMSBomber.php
+
+            alert("API ready to send:\n" + api);
+            // You can replace alert() with fetch(api)
+        }
+    </script>
 
 </body>
 </html>
