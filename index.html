@@ -1,55 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS Bomber API Integration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #response {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghosty SMS Tool</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: black;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Raining alphabet background */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .top-banner {
+        background: #0f0;
+        color: black;
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .container {
+        margin: 50px auto;
+        width: 90%;
+        max-width: 400px;
+        background: rgba(0,0,0,0.5);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+    }
+
+    .join-btn {
+        display: block;
+        width: 90%;
+        margin: 15px auto;
+        padding: 15px;
+        text-align: center;
+        background: #25D366;
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+</style>
 </head>
+
 <body>
 
-<h1>SMS Bomber API Integration</h1>
-<label for="phone">Phone Number:</label>
-<input type="text" id="phone" placeholder="Enter phone number (e.g., +923001234567)">
-<button id="sendSms">Send SMS</button>
+<div class="top-banner">
+    Join our group for more tools
+</div>
 
-<div id="response"></div>
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <h2>Ghosty SMS Tool</h2>
+
+    <input type="text" placeholder="Enter Number">
+    <input type="text" placeholder="How Many SMS">
+    <input type="text" placeholder="Extra Input">
+
+    <a class="join-btn" 
+       href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
+       target="_blank">Join Our WhatsApp Group</a>
+</div>
 
 <script>
-    document.getElementById('sendSms').addEventListener('click', function() {
-        const phone = document.getElementById('phone').value;
-        const qty = 1; // Set the quantity of SMS to send
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-        // Construct the API URL
-        const apiUrl = https://ahmadmodstools.online/PublicApis/SMSBomber.php?qty=${qty}&phone=${encodeURIComponent(phone)};
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Display the response data
-                document.getElementById('response').innerHTML = <pre>${JSON.stringify(data, null, 2)}</pre>;
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                document.getElementById('response').innerHTML = 'Error: ' + error.message;
-            });
-    });
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const columns = canvas.width / 20;
+const drops = [];
+
+for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "red";
+    ctx.font = "20px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * 20, drops[i] * 20);
+
+        if (drops[i] * 20 > canvas.height && Math.random() > 0.95) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 40);
 </script>
 
 </body>
