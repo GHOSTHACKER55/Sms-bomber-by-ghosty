@@ -5,100 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghosty SMS</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
     <style>
-        :root {
-            --bg: #0a0a0a;
-            --neon: #ff0066;
-            --neon-2: #00ff88;
-            --neon-3: #0099ff;
-            --accent: rgba(255,0,102,0.12);
-        }
-
         body {
-            background: var(--bg);
-            color: white;
-            font-family: 'Rajdhani', sans-serif;
             margin: 0;
-            padding: 0;
-        }
-
-        .branding-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.3rem;
-            text-align: center;
-            margin-top: 25px;
-            color: var(--neon);
-            text-shadow: 0 0 15px var(--neon), 0 0 30px var(--neon);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
+            background: #0d0d0d;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
         }
 
         .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 25px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 450px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,255,180,0.25);
         }
 
-        .footer {
+        h1 {
             text-align: center;
-            margin-top: 25px;
-            padding: 20px 10px;
-            font-family: 'Orbitron';
-            color: #888;
+            margin-bottom: 18px;
+            color: #00ffb4;
+            font-size: 30px;
+            text-shadow: 0 0 12px #00ffb4;
         }
 
-        .whatsapp-link {
-            display: inline-block;
-            background: #25D366;
-            padding: 12px 22px;
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-top: 14px;
+            background: #0f0f0f;
+            border: 2px solid #00ffb4;
+            border-radius: 10px;
             color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            margin-top: 15px;
-            font-size: 1.1rem;
-            box-shadow: 0 0 10px #25D366;
+            font-size: 18px;
         }
 
-        .whatsapp-link:hover {
-            background: #128C7E;
+        button {
+            width: 100%;
+            padding: 16px;
+            margin-top: 25px;
+            background: #00ffb4;
+            border: none;
+            color: black;
+            font-size: 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .whatsapp {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .whatsapp a {
+            color: #00ffb4;
+            text-decoration: none;
+            font-size: 18px;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="branding-title">Ghosty SMS</div>
-
     <div class="container">
-        <h2 style="font-family:Orbitron; text-align:center; color:var(--neon-2);">
-            Welcome to Ghosty SMS
-        </h2>
-        <p style="text-align:center; color:#bbb;">
-            Your interface has been branded successfully.
-        </p>
+        <h1>Ghosty SMS</h1>
 
-        <div style="text-align:center; margin-top:20px;">
-            <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
-               class="whatsapp-link"
-               target="_blank">
-               Join WhatsApp Group
+        <input type="text" placeholder="Enter target number">
+        <input type="number" placeholder="How many SMS you want">
+
+        <button>Start</button>
+
+        <div class="whatsapp">
+            <p>Join our community:</p>
+            <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+                WhatsApp Group
             </a>
         </div>
-    </div>
-
-    <div class="footer">
-        © 2025 Ghosty SMS — All Rights Reserved
     </div>
 
 </body>
