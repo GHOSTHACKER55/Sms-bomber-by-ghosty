@@ -2,101 +2,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SMS Bomber by Ghosty</title>
 
 <style>
     body {
         margin: 0;
-        height: 100vh;
+        font-family: Arial, sans-serif;
         overflow: hidden;
         background: black;
         color: white;
-        font-family: Arial, sans-serif;
     }
 
+    /* Raining red alphabets */
     canvas {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
         z-index: -1;
     }
 
     .container {
-        margin: 60px auto;
-        width: 90%;
-        max-width: 400px;
-        background: rgba(0,0,0,0.45);
-        padding: 20px;
-        border-radius: 12px;
         text-align: center;
+        margin-top: 40px;
     }
 
-    /* 🔥 Title design */
-    .main-title {
-        font-size: 28px;
+    h1 {
+        font-size: 32px;
+        color: red;
+        text-shadow: 0 0 10px red, 0 0 20px darkred;
+        margin-bottom: 10px;
+    }
+
+    .top-note {
+        font-size: 18px;
+        color: #00ff00;
+        margin-bottom: 10px;
         font-weight: bold;
-        color: #ff1a1a;
-        text-shadow: 0 0 10px #ff0000, 0 0 25px #ff3333;
-        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .whatsapp-btn {
+        background: #25D366;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        display: inline-block;
         margin-bottom: 25px;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.8); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    .mini-banner {
-        font-size: 18px;
-        font-weight: bold;
-        color: red;
-        margin-bottom: 6px;
-    }
-
-    .arrow {
-        font-size: 22px;
-        color: red;
-        margin-bottom: 15px;
-    }
-
     input {
-        width: 90%;
+        width: 80%;
         padding: 12px;
         margin: 10px 0;
-        border-radius: 8px;
-        border: none;
-        background: #2a2a2a;
+        font-size: 17px;
+        border-radius: 10px;
+        border: 2px solid red;
+        background: #1a1a1a;
         color: white;
-        font-size: 16px;
     }
 
-    .start-btn {
-        width: 90%;
-        padding: 15px;
-        background: #007bff;
-        border: none;
-        font-size: 18px;
-        border-radius: 12px;
-        color: white;
+    /* FIRE BUTTON */
+    .fire-btn {
+        padding: 12px 40px;
+        font-size: 20px;
         font-weight: bold;
-        margin: 10px auto;
+        color: #fff;
+        background: #b30000;
+        border: 3px solid #ff4500;
+        border-radius: 12px;
         cursor: pointer;
+        text-shadow: 0 0 5px #ff0000;
+        box-shadow: 
+            0 0 10px #ff0000,
+            0 0 20px #ff4500,
+            0 0 30px #ff8c00;
+        transition: 0.3s ease;
+        margin-top: 20px;
     }
 
-    .join-btn {
-        display: block;
-        width: 90%;
-        margin: 15px auto;
-        padding: 15px;
-        background: #00c851;
-        color: white;
-        font-size: 18px;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: bold;
+    .fire-btn:hover {
+        background: #ff0000;
+        box-shadow:
+            0 0 15px #ff0000,
+            0 0 25px #ff4500,
+            0 0 35px #ff8c00,
+            0 0 45px #ffff00;
+        transform: scale(1.05);
     }
 </style>
 </head>
@@ -106,37 +98,34 @@
 <canvas id="matrix"></canvas>
 
 <div class="container">
+    <div class="top-note">⬆️ Join our group for more tools</div>
 
-    <!-- 🔥 Designed Title -->
-    <div class="main-title">SMS Bomber by Ghosty</div>
+    <a class="whatsapp-btn" href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+        Join Our WhatsApp Group
+    </a>
 
-    <input type="text" placeholder="Enter Number">
+    <h1>SMS Bomber by Ghosty</h1>
+
+    <input type="number" placeholder="Enter Number">
     <input type="number" placeholder="How many number of SMS">
 
-    <button class="start-btn" onclick="alert('Demo button — no action allowed')">
-        START
-    </button>
-
-    <div class="mini-banner">Join our group for more tools</div>
-    <div class="arrow">⬇</div>
-
-    <a class="join-btn"
-       href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1"
-       target="_blank">Join Our WhatsApp Group</a>
-
+    <button class="fire-btn">START</button>
 </div>
 
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+/* Red raining alphabets */
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const columns = canvas.width / 20;
 const drops = [];
 
-for (let i = 0; i < columns; i++) drops[i] = 1;
+for (let i = 0; i < canvas.width / 10; i++) {
+    drops[i] = 1;
+}
 
 function draw() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -147,10 +136,11 @@ function draw() {
 
     for (let i = 0; i < drops.length; i++) {
         const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * 20, drops[i] * 20);
+        ctx.fillText(text, i * 10, drops[i] * 20);
 
-        if (drops[i] * 20 > canvas.height && Math.random() > 0.95)
+        if (drops[i] * 20 > canvas.height && Math.random() > 0.95) {
             drops[i] = 0;
+        }
 
         drops[i]++;
     }
